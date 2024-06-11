@@ -1,0 +1,65 @@
+<% layout('layouts/boilerplate') %>
+
+
+    <div class="row">
+      <h1 class="text-center">Edit Campground</h1>
+      <div class="col-6 offset-3">
+        <form action="/campgrounds/<%= campground._id%>?_method=PUT" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+          <div class="mb-2">
+            <label for="title" class="form-label">Title: </label>
+            <input type="text" id="title" name="campground[title]" autocomplete="off" class="form-control" value="<%= campground.title %>" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="mb-2">
+            <label for="location" class="form-label">Location: </label>
+            <input type="text" id="location" name="campground[location]" autocomplete="off" class="form-control" value="<%= campground.location %>" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="formFileMultiple" class="form-label">Add Images</label>
+            <input class="form-control" type="file" id="formFileMultiple" name="image" multiple>
+          </div>
+          <div class="mb-2">
+            <label for="description" class="form-label">Description: </label>
+
+            <textarea type="text" rows="4" id="description" name="campground[description]" autocomplete="off" class="form-control"required><%= campground.description %></textarea>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            </div>
+          <div class="mb-2">
+            <label for="price">Price: </label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input type="input" class="form-control" aria-label="Amount (to the nearest dollar)" id="price" name="campground[price]" value="<%= campground.price %>" required autocomplete="off">
+           
+           <span class="input-group-text">.00</span>
+           <div class="valid-feedback">
+            Looks good!
+          </div>
+          </div>
+          </div>
+          <div class="mb-3">
+            <div class="row">
+            <% campground.images.forEach(function(img, i) { %>
+              <div class="box border mb-2">
+              <img src="<%= img.url %>" alt="an image" style="height: 150px; width: 150px;" crossorigin="anonymous">
+              <div class="form-check-inline">
+                <input type="checkbox" id="image-<%= i %>" name="deleteImages[]" value="<%= img.filename %>" class="ml-3">
+                <label for="image-<%= i %>" class="text-danger">Delete this image forever.</label>
+              </div></div>
+           
+            <% }); %>
+          </div>
+          </div>
+          
+             <div class="mb-2">
+          <button class="btn btn-info">Update</button>
+        </div>
+        </form>
+      </div>
+    </div>

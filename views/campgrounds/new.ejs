@@ -1,0 +1,73 @@
+<% layout('layouts/boilerplate') %>
+  <div class="row">
+    <h1 class="text-center">Make a new campground</h1>
+    <div class="col-6 offset-3">
+      <form action="/campgrounds" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+        <div class="mb-2">
+          <label for="title" class="form-label">Title: </label>
+          <input type="text" id="title" name="campground[title]" autocomplete="off" class="form-control" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="mb-2">
+          <label for="location" class="form-label">Location: </label>
+          <input type="text" id="location" name="campground[location]" autocomplete="off" class="form-control" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+       
+        <div class="mb-3">
+          <label for="formFileMultiple" class="form-label">Add Images</label>
+          <input class="form-control" type="file" id="formFileMultiple" name="image" multiple>
+        </div>
+
+         
+        <div class="mb-2">
+          <label for="description" class="form-label">Description: </label>
+          <textarea type="text" id="description" name="campground[description]" autocomplete="off" class="form-control"
+            required></textarea>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="mb-2">
+          <label for="price">Price: </label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="price"
+              name="campground[price]" required>
+
+            <span class="input-group-text">.00</span>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <button class="btn btn-success">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    (() => {
+      'use strict'
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      const forms = document.querySelectorAll('.validated-form')
+
+      // Loop over them and prevent submission
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+    })()
+  </script>
