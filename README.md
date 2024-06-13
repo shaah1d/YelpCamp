@@ -8,8 +8,7 @@ YelpCamp is a web application where users can share information about campground
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
-- [License](#license)
-
+  
 ## Features
 - User authentication (sign up, log in, log out)
 - Create, read, update, and delete campgrounds
@@ -68,8 +67,4 @@ Here are some of the key API endpoints:
 - **POST /campgrounds/:id/reviews**: Add a review to a campground
 - **DELETE /campgrounds/:id/reviews/:reviewId**: Delete a specific review
 
-
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
