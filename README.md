@@ -39,12 +39,11 @@ YelpCamp is a web application where users can share information about campground
     ```plaintext
     DATABASE_URL=your-mongodb-connection-string
     SECRET=your-secret-key
-    MAPBOX_TOKEN=your-mapbox-token
     ```
 
 4. **Start the application:**
     ```sh
-    npm start
+    node app.js
     ```
 
 5. **Visit the application:**
